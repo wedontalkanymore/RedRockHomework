@@ -1,0 +1,28 @@
+h1 {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 50px;
+}
+
+h2 {
+  color: rgb(142, 60, 10);
+}
+
+.引言 {
+  color: rgb(142, 60, 10);
+  font-size: 30px;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
+
+.长脑子:hover {
+  transform: scale(2.8) rotate(20deg);
+  transition-duration: 2s;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
