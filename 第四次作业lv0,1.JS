@@ -15,6 +15,7 @@ function copy(insertObj) {
   return newObj;
 }
 
+
 let obj1 = copy(小陈);
 let obj2 = copy(小吴);
 
