@@ -129,7 +129,7 @@
 
 
 
-        // 👇pink老师救我
+        // 👇pink老师救我|BV1Y84y1L7Nn
         const date = [
             {
                 img: '/代码/ima/😀.jpg',
@@ -190,7 +190,7 @@
                 tabContentItem[i].classList.add('active')
             })
         }
-        // 👆pink老师救我
+        // 👆pink老师救我|BV1Y84y1L7Nn
 
 
 
@@ -217,12 +217,14 @@
 
                     for (let i = 0; i < songs.length; i++) {
                         const song = songs[i]
+                        // 👇DS的创造框架方法
                         const songdiv = document.createElement('div')
                         songdiv.style.cssText = `
                         padding: 10px;
                         border-bottom: 1px solid #eee;
                         cursor: pointer;
                         `
+                        //👆这个思路确实很动态，非常适合我这种内框架不严谨喜欢打补丁的人，受教了🙏
                         songdiv.textContent = `${i + 1}. ${song.name} - ${song.artists[0]?.name || '未知'}`
                         songdiv.onclick = () => playSong(song.id, song.name, song.artists[0]?.name || '未知')
                         searchSongList.appendChild(songdiv)
@@ -231,10 +233,13 @@
                         songdiv.style.gap = '10px'
                     }
                 })
+                // 👇如下代码里所有类似.catch方法这种是我编译途中trae自带的Builder自动生成的
                 .catch(error => {
                     console.error('搜索出错:', error)
                     alert('搜索失败')
                 })
+            // 👆我觉得这对于功能完整性有不错的补充就直接拿过来了
+
         }
 
 
@@ -244,6 +249,7 @@
                 .then(res => res.json())
                 .then(data => {
                     const songUrl = data.data[0]?.url
+                    // 👇同上
                     if (!songUrl) {
                         alert('该歌曲暂无播放地址')
                         playPause.classList.remove('active')
@@ -251,6 +257,7 @@
                         playPause.textContent = 'II'
                         return
                     }
+                    // 👆同上
                     const audio = new Audio()
                     audio.src = songUrl
                     audio.play()
@@ -291,7 +298,7 @@
         `
         }
 
-
+        // 👇小巧思
         searchBtn.addEventListener('click', search)
         searchInput.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
