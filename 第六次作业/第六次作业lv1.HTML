@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        #divlist {
+            margin: 20px auto;
+            padding: 30px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>请选择您的爱好</h1>
+    <div id="divlist">
+        <input type="checkbox" value="内卷">内卷
+        <input type="checkbox" value="疯狂内卷">疯狂内卷
+        <input type="checkbox" value="拼命内卷">拼命内卷
+        <input type="checkbox" value="使劲内卷">使劲内卷
+        <br />
+        <input type="button" value="全选" id="selectAllBtn">
+        <input type="button" value="全不选" id="selectNoneBtn">
+        <input type="button" value="反选" id="reverseBtn">
+    </div>
+
+    <script>
+        const checkbox = document.querySelectorAll('#divlist input[type="checkbox"]')
+
+        const quanxuan = document.querySelector('#selectAllBtn')
+        quanxuan.addEventListener('click', function() {
+            checkbox.forEach(function(checkbox) {
+                checkbox.checked = true
+             })
+        })
+
+        const quanbuxuan = document.querySelector('#selectNoneBtn')
+        quanbuxuan.addEventListener('click', function() {   
+            checkbox.forEach(function(checkbox) {   
+                checkbox.checked = false
+            })
+        })
+
+        const fanxuan = document.querySelector('#reverseBtn')
+        fanxuan.addEventListener('click', function() { 
+            checkbox.forEach(function(checkbox) {
+                checkbox.checked = !checkbox.checked
+            })
+        })
+    </script>
+</body>
+</html>

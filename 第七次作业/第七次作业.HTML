@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            font-size: 24px;
+            color: #333;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <p id="text1">一</p>
+    <p id="text2">二</p>
+    <p id="text3">三</p>
+    <p id="text4">四</p>
+    <!-- 这个回调确实地狱啊Oo -->
+    <script>
+        const text1 = document.querySelector('#text1')
+        const text2 = document.querySelector('#text2')
+        const text3 = document.querySelector('#text3')
+        const text4 = document.querySelector('#text4')
+
+        setTimeout(function() {
+            text1.classList.add('show')
+            setTimeout(function() {
+                text2.classList.add('show')
+                setTimeout(function() {
+                    text3.classList.add('show')
+                    setTimeout(function() {
+                        text4.classList.add('show')
+                    }, 1000)
+                }, 1000)
+            }, 1000)
+        }, 1000)
+
+
+    </script>
+</body>
+</html>

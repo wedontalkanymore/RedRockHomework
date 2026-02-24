@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易云</title>
+    <link rel="stylesheet" href="网易云.CSS">
+</head>
+
+<body>
+    <!-- 上部分 -->
+    <header>
+        <img id="logo" src="/代码/ima/网易云logo2.jpg" alt="logo">
+        <div class="search">
+            <input type="text" placeholder="网易一下你就知道(#^.^#)">
+            <button class="search-btn">🔍</button>
+        </div>
+        <div class="user">
+            <img id="avatar" src="/代码/ima/头像.jpg" alt="头像">
+            <p></p>
+            <script>
+                const username = prompt('请输入用户名')
+                if (username) {
+                    document.querySelector('.user p').textContent = username
+                }
+            </script>
+        </div>
+    </header>
+
+    <!-- 主体部分 -->
+    <main>
+
+        <aside>
+            <div class="carefully selected">
+                <li>主页</li>
+            </div>
+            <div class="like">
+                <li>喜欢</li>
+            </div>
+        </aside>
+        <article>
+            <div class="tab">
+                <div class="tab-nav">
+                    <ul>
+                        <li><a class="active" href="javascript:;">精选</a></li>
+                        <li><a href="javascript:;">广场</a></li>
+                        <li><a href="javascript:;">活动(</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="item active">
+                        <h2>精选页</h2>
+                        <div class="content" id="selected">
+                            <h2>这里真的有很多精品🙏</h2>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <h2>广场页</h2>
+                        <div class="content" id="all">
+                            <h2>这里真的有很多歌单🙏</h2>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="activity">
+                            <div class="slider">
+                                <a href="https://store.steampowered.com/app/601150/Devil_May_Cry_5/">
+                                    <img src="/代码/ima/😀.jpg" alt="">
+                                    <p>😄</p>
+                                </a>
+                            </div>
+                            <div class="toggle">
+                                <button class="prev">←</button>
+                                <button class="next">→</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item" id="result">
+                        <h2>搜索结果</h2>
+                        <div class="song-list" id="searchSongList">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+
+    </main>
+
+
+    <!-- 播放 -->
+    <footer>
+        <div class="play-container">
+            <div class="play-btn">
+                <button class="prev">I◀</button>
+                <button class="play-start active">▶</button>
+                <button class="play-pause">II</button>
+                <button class="next">▶I</button>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-nav a')
+        const tabContentItem = document.querySelectorAll('.tab-content .item')
+        const next = document.querySelector('.next')
+        const prev = document.querySelector('.prev')
+        const slider = document.querySelector('.slider img')
+        const tabContent = document.querySelector('.tab-content')
+
+
+
+        const playStart = document.querySelector('.play-start')
+        const playPause = document.querySelector('.play-pause')
+
+        playStart.addEventListener('click', () => {
+            playStart.classList.remove('active')
+            playPause.classList.add('active')
+        })
+
+        playPause.addEventListener('click', () => {
+            playPause.classList.remove('active')
+            playStart.classList.add('active')
+        })
+
+
+
+
+
+        // 👇pink老师救我
+        const date = [
+            {
+                img: '/代码/ima/😀.jpg',
+                text: '😄',
+                link: 'https://store.steampowered.com/app/601150/Devil_May_Cry_5/'
+            },
+            {
+                img: '/代码/ima/RE9.jpg',
+                text: '快端上来罢',
+                link: 'https://store.steampowered.com/app/3764200/Resident_Evil_Requiem/'
+            },
+            {
+                img: '/代码/ima/检事.jpg',
+                text: '常看常新',
+                link: 'https://store.steampowered.com/app/2401970/12/'
+            }]
+        let n = 0
+        next.addEventListener('click', () => {
+            n++
+            if (n >= date.length) {
+                n = 0
+            }
+            slider.src = date[n].img
+            slider.alt = date[n].text
+            document.querySelector('.slider p').textContent = date[n].text
+            document.querySelector('.slider a').href = date[n].link
+        })
+        prev.addEventListener('click', () => {
+            n--
+            if (n < 0) {
+                n = date.length - 1
+            }
+            slider.src = date[n].img
+            slider.alt = date[n].text
+            document.querySelector('.slider p').textContent = date[n].text
+            document.querySelector('.slider a').href = date[n].link
+        })
+
+
+        let time = setInterval(() => {
+            next.click()
+        }, 1300)
+        tabContent.addEventListener('mouseenter', () => {
+            clearInterval(time)
+        })
+        tabContent.addEventListener('mouseleave', () => {
+            time = setInterval(() => {
+                next.click()
+            }, 1300)
+        })
+
+
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].addEventListener('click', () => {
+                document.querySelector('.tab-nav a.active').classList.remove('active')
+                document.querySelector('.tab-content .item.active').classList.remove('active')
+                tabs[i].classList.add('active')
+                tabContentItem[i].classList.add('active')
+            })
+        }
+        // 👆pink老师救我
+
+
+
+        const searchBtn = document.querySelector('.search-btn')
+        const searchInput = document.querySelector('.search input')
+        const searchResult = document.querySelector('.item#result')
+        const searchSongList = document.querySelector('#searchSongList')
+        const tabContents = document.querySelectorAll('.tab-content .item')
+
+
+        function search() {
+            const keywords = searchInput.value.trim()
+            if (keywords === '') return
+            fetch(`http://localhost:3000/search?keywords=${keywords}`)
+                .then(res => res.json())
+                .then(data => {
+                    for (let i = 0; i < tabContents.length; i++) {
+                        tabContents[i].classList.remove('active')
+                    }
+                    searchResult.classList.add('active')
+                    searchSongList.innerHTML = ''
+                    const songs = data.result.songs
+                    console.log(songs)
+
+                    for (let i = 0; i < songs.length; i++) {
+                        const song = songs[i]
+                        const songdiv = document.createElement('div')
+                        songdiv.style.cssText = `
+                        padding: 10px;
+                        border-bottom: 1px solid #eee;
+                        cursor: pointer;
+                        `
+                        songdiv.textContent = `${i + 1}. ${song.name} - ${song.artists[0]?.name || '未知'}`
+                        songdiv.onclick = () => playSong(song.id, song.name, song.artists[0]?.name || '未知')
+                        searchSongList.appendChild(songdiv)
+                        songdiv.style.display = 'flex'
+                        songdiv.style.alignItems = 'center'
+                        songdiv.style.gap = '10px'
+                    }
+                })
+                .catch(error => {
+                    console.error('搜索出错:', error)
+                    alert('搜索失败')
+                })
+        }
+
+
+        function playSong(songId, songName, artist) {
+            console.log('准备播放:', songName)
+            fetch(`http://localhost:3000/song/url?id=${songId}`)
+                .then(res => res.json())
+                .then(data => {
+                    const songUrl = data.data[0]?.url
+                    if (!songUrl) {
+                        alert('该歌曲暂无播放地址')
+                        playPause.classList.remove('active')
+                        playStart.classList.add('active')
+                        playPause.textContent = 'II'
+                        return
+                    }
+                    const audio = new Audio()
+                    audio.src = songUrl
+                    audio.play()
+                    playPause.textContent = 'II'
+                    playStart.classList.remove('active')
+                    playPause.classList.add('active')
+                    displaySong(songName, artist)
+                    console.log('正在播放:', songName)
+                })
+                .catch(error => {
+                    console.error('播放失败:', error)
+                    alert('播放失败，请重试')
+                    playPause.classList.remove('active')
+                    playStart.classList.add('active')
+                    playPause.textContent = 'II'
+                })
+        }
+
+
+        function displaySong(songName, artist) {
+            let displaySong = document.querySelector('.current-song')
+            if (!displaySong) {
+                displaySong = document.createElement('div')
+                displaySong.className = 'current-song'
+                displaySong.style.cssText = `
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 20px;
+        `
+                const footer = document.querySelector('footer')
+                footer.insertBefore(displaySong, footer.firstChild)
+            }
+
+            displaySong.innerHTML = `
+            <div style="font-weight: bold; height: 30px; line-height: 30px; color: #ec2020;">♪♫♬𝄞${songName}</div>
+            <div style="font-size: 12px; color: #666;">——${artist}</div>
+        `
+        }
+
+
+        searchBtn.addEventListener('click', search)
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                search()
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

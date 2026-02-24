@@ -1,0 +1,313 @@
+html {
+    height: 100%;
+}
+
+body {
+    width: 1000px;
+    height: 700px;
+    margin: 100px auto;
+    background: linear-gradient(180deg, #dd8686, #c848b2b1);
+    /* 👆9行仿自BV1qM4y1N7m1*/
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ec2020;
+    height: 40px;
+}
+
+header #logo {
+    margin-left: 0;
+    height: 80px;
+    width: auto;
+}
+
+header .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .user #avatar {
+    height: 50px;
+    width: auto;
+    border-radius: 50%;
+}
+
+header .search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .search input {
+    width: 40%;
+    height: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ea2121b1;
+    border-radius: 20px;
+    padding: 5px 15px;
+    outline: none;
+}
+
+header .search button {
+    height: 30px;
+    width: 30px;
+    border-style: solid;
+    border-color: #ea2121b1;
+    border-radius: 50%;
+    background-color: #ec2020;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+
+main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+aside {
+    width: 60px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    overflow: auto;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
+
+.tab {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+}
+
+.tab-nav {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab-nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+.tab-nav ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.tab-nav ul li a:hover {
+    color: #ec2020;
+    transition: all 0.1s ease-in-out;
+}
+
+.tab-nav li {
+    padding: 10px 20px;
+}
+
+.tab-content {
+    flex: 1;
+    padding: 10px 20px;
+    cursor: pointer;
+    overflow: auto;
+}
+
+
+
+.activity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+}
+
+.slider {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.slider a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.slider a:hover {
+    color: #ec2020;
+    transition: all 0.1s ease-in-out;
+}
+
+.slider img {
+    max-height: 300px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.slider p {
+    font-size: 22px;
+    margin: 10px;
+    text-align: center;
+}
+
+
+.toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.toggle button {
+    height: 30px;
+    width: 58px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ec2020;
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.1s ease-in-out;
+}
+
+.toggle button:hover {
+    background-color: #c20202;
+    transform: scale(1.1);
+}
+
+
+.item {
+    height: 100%;
+    display: none;
+    overflow: auto;
+}
+
+.active {
+    display: block;
+}
+
+.song-list {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.song-list div {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.song-list div:hover {
+    background-color: #f0f0f0;
+}
+
+footer {
+    padding: 10px;
+    background-color: #ffffff;
+    border: solid 1px #e1e1e1b1;
+}
+
+.play-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.play-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.play-btn .prev {
+    border: none;
+    color: #504d4d;
+    font-size: 24px;
+    background-color: #ffffff;
+}
+
+.play-btn .next {
+    border: none;
+    color: #504d4d;
+    font-size: 24px;
+    background-color: #ffffff;
+}
+
+.play-btn .play-start {
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ec2020;
+    color: #ffffff;
+    font-size: 24px;
+    transition: all 0.1s ease-in-out;
+    display: none;
+}
+
+.play-btn .play-start.active {
+    display: block;
+}
+
+.play-btn .play-pause {
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ec2020;
+    color: #ffffff;
+    font-size: 24px;
+    transition: all 0.1s ease-in-out;
+    display: none;
+}
+
+.play-btn .play-pause.active {
+    display: block;
+}
+
+
+.play-btn .prev:hover,
+.play-btn .next:hover {
+    color: #3a3838;
+}
+
+.play-btn .play-start:hover {
+    background-color: #c20202;
+    transform: scale(1.1);
+}
+
+.play-btn .play-pause:hover {
+    background-color: #c20202;
+    transform: scale(1.1);
+}
