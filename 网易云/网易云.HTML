@@ -127,8 +127,6 @@
 
 
 
-
-
         // 👇pink老师救我|BV1Y84y1L7Nn
         const date = [
             {
@@ -233,13 +231,11 @@
                         songdiv.style.gap = '10px'
                     }
                 })
-                // 👇如下代码里所有类似.catch方法这种是我编译途中trae自带的Builder自动生成的
+                //build的补充
                 .catch(error => {
                     console.error('搜索出错:', error)
                     alert('搜索失败')
                 })
-            // 👆我觉得这对于功能完整性有不错的补充就直接拿过来了
-
         }
 
 
@@ -298,7 +294,6 @@
         `
         }
 
-        // 👇小巧思
         searchBtn.addEventListener('click', search)
         searchInput.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
